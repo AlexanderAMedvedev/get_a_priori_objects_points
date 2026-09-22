@@ -1,0 +1,5 @@
+# Python related
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
