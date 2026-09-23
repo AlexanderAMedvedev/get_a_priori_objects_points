@@ -1,10 +1,10 @@
 [project]
 name = "get_a_priori_objects_points"
-version = "0.4.0"
+version = "0.4.1"
 description = ""
 requires-python = ">=3.11"
 dependencies = [
-"numpy"
+"numpy",
 "cv_shared @ git+https://github.com/AlexanderAMedvedev/cv_shared.git@0.3.0"
 ]
 

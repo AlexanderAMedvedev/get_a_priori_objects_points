@@ -1,3 +1,6 @@
+# [0.4.1]
+* Added comma inside toml-file
+
 # [0.4.0]
 * Moved output to file
 
