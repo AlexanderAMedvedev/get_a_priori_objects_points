@@ -1,12 +1,13 @@
 import json
 from pathlib import Path
 import numpy as np
+import cv_shared
 
 
 def read_a_priori_points(
-    a_priori_points: Path, debug: bool = False
+    a_priori_points: Path, debug: bool, debug_filepath: Path,
 ) -> tuple[np.ndarray, bool, np.ndarray, bool] | None:
-    prefix = "\nfun:read_a_priori_points"
+    prefix = "\tfun:read_a_priori_points"
 
     points_key = "points"
     do_move_points_key = "do_move_points"
@@ -24,12 +25,13 @@ def read_a_priori_points(
                 )
             do_convert_mm_2_m: bool = data[do_convert_mm_2_m_key]
             if debug:
-                print(f"{prefix}")
-                print(f"A priori points from file:\n {points}")
-                print(f"Do move points flag: {do_move_points}")
-                print(f"Final origin point: {final_origin_point}")
-                print(f"do convert from mm to m flag: {do_convert_mm_2_m}")
-
+                value: str=f"""{prefix}
+A priori points from file:\n {points}
+Do_move_points flag: {do_move_points}
+Final origin point: {final_origin_point}
+Do_convert_from_mm_2_m flag: {do_convert_mm_2_m}"""
+                cv_shared.append_value_to_file(value, debug_filepath)
+                
             return (points, do_move_points, final_origin_point, do_convert_mm_2_m)
     except (OSError, ValueError, KeyError) as error:
         print(f"FILE {a_priori_points} ISN'T PARSED ({error}),\n\
