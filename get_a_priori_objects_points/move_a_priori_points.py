@@ -7,9 +7,9 @@ def move_a_priori_points(
     final_origin_point: np.ndarray,
     debug: bool = False,
 ) -> np.ndarray:
-    prefix='fun:move_a_priori_points'
+    prefix='\nfun:move_a_priori_points'
     output=input_points-final_origin_point
     if debug:
             print(f'{prefix}')
-            print(f'points in final origin: {output}')
+            print(f'points in final origin:\n {output}')
     return output 
