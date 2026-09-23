@@ -15,11 +15,11 @@ def read_a_priori_points(
     try:
         with open(a_priori_points) as file:
             data = json.load(file)
-            points: np.ndarray = np.array(data[points_key])
+            points: np.ndarray = np.array(data[points_key], dtype=np.float32)
             do_move_points: bool = data[do_move_points_key]
             if do_move_points:
                 final_origin_point: np.ndarray = np.array(
-                    data[final_origin_point_key]
+                    data[final_origin_point_key], dtype=np.float32
                 )
             if debug:
                 print(f"{prefix}")
